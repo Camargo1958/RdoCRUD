@@ -6,6 +6,7 @@ rdo_crud\dao\UserDao.class
 rdo_crud\service\RelDiarioServiceImpl.class
 rdo_crud\config\WebInitializer.class
 rdo_crud\model\User.class
+rdo_crud\service\ServiceLoginJR.class
 rdo_crud\dao\UserDaoImpl$UserMapper.class
 rdo_crud\service\UserServiceImpl.class
 rdo_crud\service\UserService.class
@@ -16,3 +17,4 @@ rdo_crud\dao\RelDiarioDaoImpl.class
 rdo_crud\service\RelDiarioService.class
 rdo_crud\dao\UserDaoImpl$1.class
 rdo_crud\model\RelDiario.class
+rdo_crud\vo\VOUsuario.class
