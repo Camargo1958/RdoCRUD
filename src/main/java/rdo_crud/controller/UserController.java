@@ -65,9 +65,33 @@ public class UserController {
 	 @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	 public ModelAndView delete(@PathVariable("id") int id){
   
-	  userService.deleteUser(id);;
+	  userService.deleteUser(id);
 	  	  
 	  return new ModelAndView("redirect:/user/list");
+	 }
+	 
+	 @RequestMapping(value="/verify1/{id}", method=RequestMethod.GET)
+	 public ModelAndView verify1(@PathVariable("id") int id){
+	  ModelAndView model = new ModelAndView("user/user_form");
+	  
+	  User user = userService.findUserById(id);
+	  model.addObject("userForm", user);
+	  
+	  return model;
+	 }
+	 
+	 @RequestMapping(value="/verify2/{user_name}", method=RequestMethod.GET)
+	 public ModelAndView verify2(@PathVariable("user_name") String user_name){
+	  ModelAndView model = new ModelAndView("user/user_form");
+	  //System.out.println("verify2 user_name: "+ user_name);
+	  User user = userService.findUserByName(user_name);
+	  //if(user != null) {
+		  model.addObject("userForm", user);
+/*	  }else{
+		  user = new User("Invalid");
+		  model.addObject("userForm", user);
+	  }*/
+	  return model;
 	 }
 	 
 }

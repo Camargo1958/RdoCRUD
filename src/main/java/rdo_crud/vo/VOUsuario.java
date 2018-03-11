@@ -1,5 +1,9 @@
 package rdo_crud.vo;
 
+/**
+ * @author Aldrovando
+ * Version 2.0
+ */
 public class VOUsuario {
 	private String usuario;
 	private String password;

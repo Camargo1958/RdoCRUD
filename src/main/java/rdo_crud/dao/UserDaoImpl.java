@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -14,6 +15,10 @@ import org.springframework.stereotype.Repository;
 
 import rdo_crud.model.User;
 
+/**
+ * @author Aldrovando
+ * Version 2.0
+ */
 @Repository
 public class UserDaoImpl implements UserDao{
 	
@@ -91,10 +96,44 @@ public class UserDaoImpl implements UserDao{
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see rdo_crud.dao.UserDao#findUserById(int)
+	 */
 	public User findUserById(int id) {
 		  String sql = "SELECT * FROM users WHERE id = :id";
+		  //System.out.println("SQL: "+sql);
 		  
-		  return namedParameterJdbcTemplate
-		.queryForObject(sql, getSqlParameterByModel(new User(id)), new UserMapper());
+		  User user1 = new User("Invalid");
+		  
+		  try
+		  {
+			  return namedParameterJdbcTemplate
+			.queryForObject(sql, getSqlParameterByModel(new User(id)), new UserMapper());
+		  }
+		  catch (EmptyResultDataAccessException e)
+		  {
+			  return user1;
+		  }
 	}
+	
+	public User findUserByName(String user_name) {
+		  String sql = "SELECT * FROM users WHERE user_name = :user_name";
+		  //System.out.println("user_name = "+ user_name);
+		  //System.out.println("SQL: "+sql);
+		  
+		  User user1 = new User("Invalid");
+		  
+		  try
+		  {
+			  return namedParameterJdbcTemplate
+			.queryForObject(sql, getSqlParameterByModel(new User(user_name)), new UserMapper());
+		  }
+		  catch (EmptyResultDataAccessException e)
+		  {
+			  return user1;
+		  }
+		  
+	}
+	
+	
 }

@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import rdo_crud.dao.UserDao;
 import rdo_crud.model.User;
 
+/**
+ * @author Aldrovando
+ * Version 2.0
+ */
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -36,6 +40,10 @@ public class UserServiceImpl implements UserService{
 
 	public User findUserById(int id) {
 		return userDao.findUserById(id);
+	}
+	
+	public User findUserByName(String user_name) {
+		return userDao.findUserByName(user_name);
 	}
 
 	

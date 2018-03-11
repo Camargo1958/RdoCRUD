@@ -1,5 +1,9 @@
 package rdo_crud.model;
 
+/**
+ * @author Aldrovando
+ * Version 2.0
+ */
 public class User {
 	private Integer id;
 	private String user_name;
@@ -14,6 +18,11 @@ public class User {
 	public User(Integer id) {
 		super();
 		this.id = id;
+	}
+	
+	public User(String user_name) {
+		super();
+		this.user_name = user_name;
 	}
 	
 	public User() {
